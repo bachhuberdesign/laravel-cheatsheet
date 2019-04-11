@@ -30,7 +30,6 @@ h6 {
 
 img.larajobs-logo {
   display: inline;
-  height: 30px;
 }
 
 a.l5update {
@@ -53,6 +52,11 @@ a.l5update {
 
 .top-bar-section .has-form {
   background: transparent;
+}
+
+.top-bar-section li,
+.top-bar-section a {
+  background-color: #222222 !important;
 }
 
 .top-bar-section li a:not(.button) {
