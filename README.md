@@ -1,8 +1,9 @@
 ## Laravel 5.8 Cheat Sheet
 
 Inpsired by [Laravel Cheat Sheets](https://github.com/jesseobrien/laravel-cheatsheet)
+Forked from [Laravel 5.3 LTS Cheat Sheet](https://github.com/mclxly/laravel5-cheatsheet)
 
-Finally a cheat sheet for Laravel 5 (master). Keep in mind this is a work in progress and will be fairly dynamic. It will follow the docs closely and I'll try to keep it up to date with new features being added.
+Cheatsheet supporting the latest version of Laravel (currently 5.8). WIP
 
 **Live Version Here:**
 
@@ -10,4 +11,4 @@ Finally a cheat sheet for Laravel 5 (master). Keep in mind this is a work in pro
 
 ### Contributing
 
-If you see a typo or wish to add/change anything, open an issue or pop up a pull request. Thanks!
+All changes are welcome -- if you see something that is incorrect or should be added, feel free to open an issue or a pull request.
