@@ -645,17 +645,18 @@ Input::file('name')->move($destinationPath, $fileName);
                 </pre>
 
                 <h4><a name="cache" href="#cache">Cache</a> <a href="http://laravel.com/docs/cache" title="Cache @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
-                <pre class="prettyprint lang-php">Cache::put('key', 'value', $minutes);
-Cache::add('key', 'value', $minutes);
+                <pre class="prettyprint lang-php">Cache::put('key', 'value', $seconds);
+Cache::put('foo', 'bar', now()->addSeconds(30));
+Cache::add('key', 'value', $seconds);
 Cache::forever('key', 'value');
-Cache::remember('key', $minutes, function(){ return 'value' });
+Cache::remember('key', $seconds, function(){ return 'value' });
 Cache::rememberForever('key', function(){ return 'value' });
 Cache::forget('key');
 Cache::has('key');
 Cache::get('key');
 Cache::get('key', 'default');
 Cache::get('key', function(){ return 'default'; });
-Cache::tags('my-tag')->put('key','value', $minutes);
+Cache::tags('my-tag')->put('key','value', $seconds);
 Cache::tags('my-tag')->has('key');
 Cache::tags('my-tag')->get('key');
 Cache::tags('my-tag')->forget('key');
