@@ -283,8 +283,6 @@ Config::get('app.timezone', 'UTC');
 Config::set('database.default', 'sqlite');
                 </pre>
 
-
-
                 <h4><a name="routing" href="#routing">Routing</a> <a href="https://laravel.com/docs/routing" title="Routing @ Laravel Docs"><i class="icon-file-text"></i></a> <a href="https://laravel.com/docs/helpers#routing" title="Routing Helpers @ Laravel Docs"><i class="icon-file-text"></i></a> </h4>
                 <pre class="prettyprint lang-php">Route::get('foo', function(){});
 Route::get('foo', 'ControllerName@function');
@@ -326,12 +324,12 @@ Route::match(['get', 'post'], '/', function(){});
 
                 <h6>Route Constraints</h6>
                 <pre class="prettyprint lang-php">Route::get('foo/{bar}', function($bar){})
-	->where('bar', '[0-9]+');
+    ->where('bar', '[0-9]+');
 Route::get('foo/{bar}/{baz}', function($bar, $baz){})
-	->where(array('bar' => '[0-9]+', 'baz' => '[A-Za-z]'))
+    ->where(array('bar' => '[0-9]+', 'baz' => '[A-Za-z]'))
                 </pre>
                 <pre class="prettyprint lang-php">// Set a pattern to be used across routes
-			Route::pattern('bar', '[0-9]+')
+            Route::pattern('bar', '[0-9]+')
                 </pre>
 
                 <h6>HTTP Middleware <a href="https://laravel.com/docs/middleware" title="HTTP Middleware @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
@@ -493,34 +491,34 @@ $users = $query->addSelect('age')->get();
 // Using Where Operators
 $users = DB::table('users')->where('votes', '>', 100)->get();
 $users = DB::table('users')
-                    ->where('votes', '>', 100)
-                    ->orWhere('name', 'John')
-                    ->get();
+    ->where('votes', '>', 100)
+    ->orWhere('name', 'John')
+    ->get();
 $users = DB::table('users')
-                    ->whereBetween('votes', [1, 100])->get();
+    ->whereBetween('votes', [1, 100])->get();
 $users = DB::table('users')
-                    ->whereNotBetween('votes', [1, 100])->get();
+    ->whereNotBetween('votes', [1, 100])->get();
 $users = DB::table('users')
-                    ->whereIn('id', [1, 2, 3])->get();
+    ->whereIn('id', [1, 2, 3])->get();
 $users = DB::table('users')
-                    ->whereNotIn('id', [1, 2, 3])->get();
+    ->whereNotIn('id', [1, 2, 3])->get();
 $users = DB::table('users')
-                    ->whereNull('updated_at')->get();
+    ->whereNull('updated_at')->get();
 DB::table('name')->whereNotNull('column')->get();                    
 // Dynamic Where Clauses
 $admin = DB::table('users')->whereId(1)->first();
 $john = DB::table('users')
-                    ->whereIdAndEmail(2, 'john@doe.com')
-                    ->first();
+    ->whereIdAndEmail(2, 'john@doe.com')
+    ->first();
 $jane = DB::table('users')
-                    ->whereNameOrAge('Jane', 22)
-                    ->first();
+    ->whereNameOrAge('Jane', 22)
+    ->first();
 // Order By, Group By, And Having
 $users = DB::table('users')
-                    ->orderBy('name', 'desc')
-                    ->groupBy('count')
-                    ->having('count', '>', 100)
-                    ->get();
+    ->orderBy('name', 'desc')
+    ->groupBy('count')
+    ->having('count', '>', 100)
+    ->get();
 DB::table('name')->orderBy('column')->get();
 DB::table('name')->orderBy('column','desc')->get();
 DB::table('name')->having('count', '>', 100)->get();                    
@@ -532,23 +530,23 @@ $users = DB::table('users')->skip(10)->take(5)->get();
             <pre class="prettyprint lang-php">
 // Basic Join Statement
 DB::table('users')
-            ->join('contacts', 'users.id', '=', 'contacts.user_id')
-            ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.id', 'contacts.phone', 'orders.price')
-            ->get();
+    ->join('contacts', 'users.id', '=', 'contacts.user_id')
+    ->join('orders', 'users.id', '=', 'orders.user_id')
+    ->select('users.id', 'contacts.phone', 'orders.price')
+    ->get();
 // Left Join Statement
 DB::table('users')
-        ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
-        ->get();
+    ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+    ->get();
 // select * from users where name = 'John' or (votes > 100 and title <> 'Admin')
 DB::table('users')
-            ->where('name', '=', 'John')
-            ->orWhere(function($query)
-            {
-                $query->where('votes', '>', 100)
-                      ->where('title', '<>', 'Admin');
-            })
-            ->get();
+    ->where('name', '=', 'John')
+    ->orWhere(function($query)
+    {
+        $query->where('votes', '>', 100)
+                ->where('title', '<>', 'Admin');
+    })
+    ->get();
             </pre>
 
             <h6>Aggregates <a href="https://laravel.com/docs/5.0/queries#aggregates" title="Aggregates @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
@@ -568,10 +566,10 @@ DB::table('name')->cacheTags(array('my-first-key','my-second-key'))->remember(5)
             <h6>Raw Expressions <a href="https://laravel.com/docs/5.0/queries#raw-expressions" title="Raw Expressions @ Laravel Docs"><i class="icon-file-text"></i></a></h6>
             <pre class="prettyprint lang-php">
 $users = DB::table('users')
-                     ->select(DB::raw('count(*) as user_count, status'))
-                     ->where('status', '<>', 1)
-                     ->groupBy('status')
-                     ->get();
+    ->select(DB::raw('count(*) as user_count, status'))
+    ->where('status', '<>', 1)
+    ->groupBy('status')
+    ->get();
 // return rows
 DB::select('select * from users where id = ?', array('value'));
 // return nr affected rows
@@ -599,8 +597,8 @@ DB::table('users')->insert([
 ]);
 // Updates
 DB::table('users')
-            ->where('id', 1)
-            ->update(['votes' => 1]);            
+    ->where('id', 1)
+    ->update(['votes' => 1]);            
 DB::table('users')->increment('votes');
 DB::table('users')->increment('votes', 5);
 DB::table('users')->decrement('votes');
@@ -821,9 +819,9 @@ $table->enum('choices', array('foo', 'bar'));
 $table->rememberToken();
 // Adds INTEGER parent_id and STRING parent_type
 $table->morphs('parent');
-->nullable()
-->default($value)
-->unsigned()
+    ->nullable()
+    ->default($value)
+    ->unsigned()
                 </pre>
 
                 <h4><a name="input" href="#input">Input</a> <a href="https://laravel.com/docs/requests" title="Input @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
@@ -987,7 +985,7 @@ Request::wantsJson();
 return Response::make($contents, 200);
 return Response::json(array('key' => 'value'));
 return Response::json(array('key' => 'value'))
-	->setCallback(Input::get('callback'));
+    ->setCallback(Input::get('callback'));
 return Response::download($filepath);
 return Response::download($filepath, $filename, $headers);
 // Create a response and modify a header value
@@ -996,7 +994,7 @@ $response->header('Content-Type', 'application/json');
 return $response;
 // Attach a cookie to a response
 return Response::make($content)
-	->withCookie(Cookie::make('key', 'value'));
+    ->withCookie(Cookie::make('key', 'value'));
                 </pre>
 
                 <h4><a name="redirects" href="#redirects">Redirects</a> <a href="https://laravel.com/docs/responses#redirects" title="Redirects @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
@@ -1135,14 +1133,14 @@ php artisan queue:flush
 
                 <h4><a name="validation" href="#validation">Validation</a> <a href="https://laravel.com/docs/validation" title="Validation @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
                 <pre class="prettyprint lang-php">Validator::make(
-	array('key' => 'Foo'),
-	array('key' => 'required|in:Foo')
+    array('key' => 'Foo'),
+    array('key' => 'required|in:Foo')
 );
 Validator::extend('foo', function($attribute, $value, $params){});
 Validator::extend('foo', 'FooValidator@validate');
 Validator::resolver(function($translator, $data, $rules, $msgs)
 {
-	return new FooValidator($translator, $data, $rules, $msgs);
+    return new FooValidator($translator, $data, $rules, $msgs);
 });
                 </pre>
 
@@ -1301,7 +1299,7 @@ Form::submit('Submit!', array('class' => 'name'));
 Form::button('name', array('class' => 'name'));
 Form::macro('fooField', function()
 {
-	return '&lt;input type="custom"/&gt;';
+    return '&lt;input type="custom"/&gt;';
 });
 Form::fooField();
                 </pre>
@@ -1440,7 +1438,6 @@ File::deleteDirectory('directory', $preserve = false);
 // Empty the specified directory of all files and folders
 File::cleanDirectory('directory');
                 </pre>
-
 
                 <h4><a name="helpers" href="#helpers">Helpers</a> <a href="https://laravel.com/docs/helpers" title="Helpers @ Laravel Docs"><i class="icon-file-text"></i></a></h4>
                 <h6>Arrays</h6>
@@ -1583,7 +1580,7 @@ $this->seed($connection);
 SSH::into($remote)->run(array $commands); // specify remote, otherwise assumes default
 SSH::run(array $commands, function($line)
 {
-	echo $line.PHP_EOL;
+    echo $line.PHP_EOL;
 });
                 </pre>
 
@@ -1591,7 +1588,7 @@ SSH::run(array $commands, function($line)
                 <pre class="prettyprint lang-php">SSH::define($taskName, array $commands); // define
 SSH::task($taskName, function($line) // execute
 {
-	echo $line.PHP_EOL;
+    echo $line.PHP_EOL;
 });
                 </pre>
 
